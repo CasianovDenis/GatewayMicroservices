@@ -45,7 +45,7 @@ namespace Myproject.Controllers
             var result = new Result<LoginResponse>() { ResponseCode = ResponseCode.SUCCES, ReturnObject = new LoginResponse() };
             try
             {
-                var url = _configuration.GetSection("UrlPath:Login");
+                var url = _configuration.GetSection("UrlPath:Auth_Login");
 
                 var response = _httpService.PostRequest(user, url.Value);
                 if (!response.IsOk)

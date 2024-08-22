@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Authentication;
 
 
 namespace Myproject.Base.Models
@@ -33,5 +34,12 @@ namespace Myproject.Base.Models
         }
 
         public int UserContextId { get { return UserContext(); } }
+
+        private string GetAcessToken()
+        {
+            return HttpContext.GetTokenAsync("access_token").Result;
+        }
+
+        public string AcessToken { get { return GetAcessToken(); } }
     }
 }
